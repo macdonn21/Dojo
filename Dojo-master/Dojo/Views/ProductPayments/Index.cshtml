@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Dojo.Models.ProductPayment>
+
+@{
+    ViewBag.Title = "Payment Log";
+}
+
+<div class="box box-info">
+
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                Amount Recieved ($)
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                   <b>$</b> @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.STUDENT_Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.STUDENT_Lname)
+                </td>
+                <td>
+                  
+                    @Html.ActionLink("Details", "Details", new { id = item.Payment_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,122 @@
+﻿
+@model PagedList.IPagedList<Dojo.Models.Attendance>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Attendance";
+}
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h1 class="box-title">@ViewBag.Title</h1>
+    </div>
+    <div>
+        <span>@(ViewBag.Exception != null ? ViewBag.Exception : string.Empty)</span>
+    </div>
+
+
+    @using (Html.BeginForm("Index", "Attendances", FormMethod.Get))
+    {
+        <div class="box-body">
+            <p>
+                <h4>@Html.ActionLink("Create New", "Create")</h4> <br />
+
+                Find by First name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+                @*Find by Date: @Html.TextBox("DateString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />*@
+                
+            </p>
+        </div>
+    }
+        <table id="example1" class="table table-bordered table-striped">
+
+
+            <tr>
+                <th>
+                    @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Firstname", "Index", new { sortOrder = ViewBag.NameSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Lastname", "Index", new { sortOrder = ViewBag.NameSortParm })
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                var date = item.Date.ToString("d/M/yyyy");
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.STUDENT_Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.STUDENT_Lname)
+                </td>
+
+            </tr>
+            }
+
+        </table>
+    <br />
+
+
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+</div>
+
+
+
+
+@*@model IEnumerable<Dojo.Models.Attendance>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <div class="box box-info">
+
+        <div class="box-header with-border">
+            <h2>@ViewBag.Title</h2>
+        </div>
+
+        <p>
+            @Html.ActionLink("Take New Attendance", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                   Firstname
+                </th>
+                <th>Lastname</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                var date = item.Date.ToString("d/M/yyyy");
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.STUDENT_Fname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.STUDENT_Lname)
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>*@

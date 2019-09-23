@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Dojo.Models.Certificate>
+
+@{
+    ViewBag.Title = "Certificates";
+}
+
+<div class="box box-info">
+
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <p>
+        @Html.ActionLink("Add New Certificate", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Certificate
+            <th>
+                Rank
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rank.Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Certificate_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Certificate_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Certificate_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

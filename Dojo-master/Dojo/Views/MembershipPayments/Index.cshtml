@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Dojo.Models.MembershipPayment>
+
+@{
+    ViewBag.Title = "View Membership Subscriptions";
+}
+
+<div class="box box-info">
+
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            @*<th>
+                Student
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Membership.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            var date = item.Date.ToShortDateString();
+
+            <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.STUDENT_ID)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Membership.Name)
+                </td>
+                <td>
+                   @Html.ActionLink("Details", "Details", new { id = item.MembershipPayment_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

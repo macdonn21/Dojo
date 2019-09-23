@@ -1,0 +1,48 @@
+﻿@model Dojo.Models.HAS_CERTIFICATE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+  
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateObtained)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateObtained)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Certificate.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Certificate.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.STUDENT_Fname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.STUDENT_Lname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.STUDENT_Lname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+ |
+    @Html.ActionLink("Back to List", "Index")
+</p>

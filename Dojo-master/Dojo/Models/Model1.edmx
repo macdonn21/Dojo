@@ -1,0 +1,1024 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdtProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="Attendance_ID" />
+          </Key>
+          <Property Name="Attendance_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="Certificate_ID" />
+          </Key>
+          <Property Name="Certificate_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rank_ID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Class_ID" />
+          </Key>
+          <Property Name="Class_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClaseCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartTime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EndTime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rank_ID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HAS_CERTIFICATE">
+          <Key>
+            <PropertyRef Name="Issue_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Certificate_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateObtained" Type="varchar" MaxLength="50" />
+          <Property Name="Issue_ID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AdtProject.dbo.HAS_PARENT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HAS_PARENT">
+          <Key>
+            <PropertyRef Name="STUDENT_ID" />
+            <PropertyRef Name="Parent_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Parent_ID" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Membership">
+          <Key>
+            <PropertyRef Name="Membership_ID" />
+          </Key>
+          <Property Name="Membership_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Duration" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Profit" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MembershipPayment">
+          <Key>
+            <PropertyRef Name="MembershipPayment_ID" />
+          </Key>
+          <Property Name="MembershipPayment_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Membership_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="Parent_ID" />
+          </Key>
+          <Property Name="Parent_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Parent_FName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Parent_LName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Parent_Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StreetName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Town" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CostPrice" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SellingPrice" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="QuantityInStock" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="QuantitySold" Type="varchar" MaxLength="50" />
+          <Property Name="Profit" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductPayment">
+          <Key>
+            <PropertyRef Name="Payment_ID" />
+          </Key>
+          <Property Name="Payment_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="varchar" MaxLength="50" />
+          <Property Name="Total" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rank">
+          <Key>
+            <PropertyRef Name="Rank_ID" />
+          </Key>
+          <Property Name="Rank_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="STUDENT_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STUDENT_Fname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STUDENT_Lname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STUDENT_DOB" Type="date" Nullable="false" />
+          <Property Name="StreetName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Town" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateJoined" Type="date" Nullable="false" />
+          <Property Name="Membership_ID" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsParent" Type="bit" Nullable="false" />
+          <Property Name="Rank_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Parent_ID" Type="varchar" MaxLength="50" />
+          <Property Name="AttendanceCount" Type="nchar" MaxLength="10" />
+          <Property Name="MembershipValidTill" Type="date" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Test_ID" />
+          </Key>
+          <Property Name="Test_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rank_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Profit" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TestPayment">
+          <Key>
+            <PropertyRef Name="TestPayment_ID" />
+          </Key>
+          <Property Name="TestPayment_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Test_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Attendance_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Certificate_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAS_CERTIFICATE_Certificate">
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="1" />
+          <End Role="HAS_CERTIFICATE" Type="Self.HAS_CERTIFICATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certificate">
+              <PropertyRef Name="Certificate_ID" />
+            </Principal>
+            <Dependent Role="HAS_CERTIFICATE">
+              <PropertyRef Name="Certificate_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAS_CERTIFICATE_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="HAS_CERTIFICATE" Type="Self.HAS_CERTIFICATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="HAS_CERTIFICATE">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAS_PARENT_Parent">
+          <End Role="Parent" Type="Self.Parent" Multiplicity="1" />
+          <End Role="HAS_PARENT" Type="Self.HAS_PARENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parent">
+              <PropertyRef Name="Parent_ID" />
+            </Principal>
+            <Dependent Role="HAS_PARENT">
+              <PropertyRef Name="Parent_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAS_PARENT_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="HAS_PARENT" Type="Self.HAS_PARENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="HAS_PARENT">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipPayment_Membership">
+          <End Role="Membership" Type="Self.Membership" Multiplicity="1" />
+          <End Role="MembershipPayment" Type="Self.MembershipPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membership">
+              <PropertyRef Name="Membership_ID" />
+            </Principal>
+            <Dependent Role="MembershipPayment">
+              <PropertyRef Name="Membership_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductPayment" Type="Self.ProductPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="ProductPayment">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPayment_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="ProductPayment" Type="Self.ProductPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="ProductPayment">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Membership">
+          <End Role="Membership" Type="Self.Membership" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membership">
+              <PropertyRef Name="Membership_ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Membership_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestPayment_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="TestPayment" Type="Self.TestPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="TestPayment">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestPayment_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="TestPayment" Type="Self.TestPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Test_ID" />
+            </Principal>
+            <Dependent Role="TestPayment">
+              <PropertyRef Name="Test_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AdtProjectModelStoreContainer">
+          <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Certificate" EntityType="Self.Certificate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HAS_CERTIFICATE" EntityType="Self.HAS_CERTIFICATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Membership" EntityType="Self.Membership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MembershipPayment" EntityType="Self.MembershipPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parent" EntityType="Self.Parent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductPayment" EntityType="Self.ProductPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rank" EntityType="Self.Rank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestPayment" EntityType="Self.TestPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HAS_PARENT" EntityType="Self.HAS_PARENT" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HAS_PARENT].[STUDENT_ID] AS [STUDENT_ID], 
+    [HAS_PARENT].[Parent_ID] AS [Parent_ID]
+    FROM [dbo].[HAS_PARENT] AS [HAS_PARENT]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Attendance_Student" Association="Self.FK_Attendance_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Attendance" EntitySet="Attendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Certificate_Rank" Association="Self.FK_Certificate_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Certificate" EntitySet="Certificate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Rank" Association="Self.FK_Class_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAS_CERTIFICATE_Certificate" Association="Self.FK_HAS_CERTIFICATE_Certificate">
+            <End Role="Certificate" EntitySet="Certificate" />
+            <End Role="HAS_CERTIFICATE" EntitySet="HAS_CERTIFICATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAS_CERTIFICATE_Student" Association="Self.FK_HAS_CERTIFICATE_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="HAS_CERTIFICATE" EntitySet="HAS_CERTIFICATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAS_PARENT_Parent" Association="Self.FK_HAS_PARENT_Parent">
+            <End Role="Parent" EntitySet="Parent" />
+            <End Role="HAS_PARENT" EntitySet="HAS_PARENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAS_PARENT_Student" Association="Self.FK_HAS_PARENT_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="HAS_PARENT" EntitySet="HAS_PARENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipPayment_Membership" Association="Self.FK_MembershipPayment_Membership">
+            <End Role="Membership" EntitySet="Membership" />
+            <End Role="MembershipPayment" EntitySet="MembershipPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Product" Association="Self.FK_Payment_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductPayment" EntitySet="ProductPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPayment_Student" Association="Self.FK_ProductPayment_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ProductPayment" EntitySet="ProductPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Membership" Association="Self.FK_Student_Membership">
+            <End Role="Membership" EntitySet="Membership" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Rank" Association="Self.FK_Student_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Rank" Association="Self.FK_Test_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestPayment_Student" Association="Self.FK_TestPayment_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="TestPayment" EntitySet="TestPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestPayment_Test" Association="Self.FK_TestPayment_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="TestPayment" EntitySet="TestPayment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdtProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="Attendance_ID" />
+          </Key>
+          <Property Name="Attendance_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Attendance_Student" FromRole="Attendance" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="Certificate_ID" />
+          </Key>
+          <Property Name="Certificate_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rank_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Rank" Relationship="Self.FK_Certificate_Rank" FromRole="Certificate" ToRole="Rank" />
+          <NavigationProperty Name="HAS_CERTIFICATE" Relationship="Self.FK_HAS_CERTIFICATE_Certificate" FromRole="Certificate" ToRole="HAS_CERTIFICATE" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Class_ID" />
+          </Key>
+          <Property Name="Class_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClaseCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EndTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rank_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Rank" Relationship="Self.FK_Class_Rank" FromRole="Class" ToRole="Rank" />
+        </EntityType>
+        <EntityType Name="HAS_CERTIFICATE">
+          <Key>
+            <PropertyRef Name="Issue_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Certificate_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateObtained" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Issue_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Certificate" Relationship="Self.FK_HAS_CERTIFICATE_Certificate" FromRole="HAS_CERTIFICATE" ToRole="Certificate" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_HAS_CERTIFICATE_Student" FromRole="HAS_CERTIFICATE" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Membership">
+          <Key>
+            <PropertyRef Name="Membership_ID" />
+          </Key>
+          <Property Name="Membership_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Duration" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MembershipPayments" Relationship="Self.FK_MembershipPayment_Membership" FromRole="Membership" ToRole="MembershipPayment" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_Membership" FromRole="Membership" ToRole="Student" />
+          <Property Name="Profit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MembershipPayment">
+          <Key>
+            <PropertyRef Name="MembershipPayment_ID" />
+          </Key>
+          <Property Name="MembershipPayment_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Membership_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Membership" Relationship="Self.FK_MembershipPayment_Membership" FromRole="MembershipPayment" ToRole="Membership" />
+        </EntityType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="Parent_ID" />
+          </Key>
+          <Property Name="Parent_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parent_FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parent_LName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parent_Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.HAS_PARENT" FromRole="Parent" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CostPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SellingPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuantityInStock" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuantitySold" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductPayments" Relationship="Self.FK_Payment_Product" FromRole="Product" ToRole="ProductPayment" />
+          <Property Name="Profit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductPayment">
+          <Key>
+            <PropertyRef Name="Payment_ID" />
+          </Key>
+          <Property Name="Payment_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Payment_Product" FromRole="ProductPayment" ToRole="Product" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_ProductPayment_Student" FromRole="ProductPayment" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Rank">
+          <Key>
+            <PropertyRef Name="Rank_ID" />
+          </Key>
+          <Property Name="Rank_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Certificates" Relationship="Self.FK_Certificate_Rank" FromRole="Rank" ToRole="Certificate" />
+          <NavigationProperty Name="Classes" Relationship="Self.FK_Class_Rank" FromRole="Rank" ToRole="Class" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_Rank" FromRole="Rank" ToRole="Student" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK_Test_Rank" FromRole="Rank" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="STUDENT_ID" />
+          </Key>
+          <Property Name="STUDENT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STUDENT_Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STUDENT_Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STUDENT_DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StreetName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateJoined" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Membership_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsParent" Type="Boolean" Nullable="false" />
+          <Property Name="Rank_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parent_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AttendanceCount" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MembershipValidTill" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Attendances" Relationship="Self.FK_Attendance_Student" FromRole="Student" ToRole="Attendance" />
+          <NavigationProperty Name="HAS_CERTIFICATE" Relationship="Self.FK_HAS_CERTIFICATE_Student" FromRole="Student" ToRole="HAS_CERTIFICATE" />
+          <NavigationProperty Name="Membership" Relationship="Self.FK_Student_Membership" FromRole="Student" ToRole="Membership" />
+          <NavigationProperty Name="ProductPayments" Relationship="Self.FK_ProductPayment_Student" FromRole="Student" ToRole="ProductPayment" />
+          <NavigationProperty Name="Rank" Relationship="Self.FK_Student_Rank" FromRole="Student" ToRole="Rank" />
+          <NavigationProperty Name="TestPayments" Relationship="Self.FK_TestPayment_Student" FromRole="Student" ToRole="TestPayment" />
+          <NavigationProperty Name="Parents" Relationship="Self.HAS_PARENT" FromRole="Student" ToRole="Parent" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Test_ID" />
+          </Key>
+          <Property Name="Test_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rank_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Rank" Relationship="Self.FK_Test_Rank" FromRole="Test" ToRole="Rank" />
+          <NavigationProperty Name="TestPayments" Relationship="Self.FK_TestPayment_Test" FromRole="Test" ToRole="TestPayment" />
+          <Property Name="Profit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TestPayment">
+          <Key>
+            <PropertyRef Name="TestPayment_ID" />
+          </Key>
+          <Property Name="TestPayment_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Test_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="STUDENT_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_TestPayment_Student" FromRole="TestPayment" ToRole="Student" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_TestPayment_Test" FromRole="TestPayment" ToRole="Test" />
+        </EntityType>
+        <Association Name="FK_Attendance_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="Attendance">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Certificate_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAS_CERTIFICATE_Certificate">
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="1" />
+          <End Role="HAS_CERTIFICATE" Type="Self.HAS_CERTIFICATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certificate">
+              <PropertyRef Name="Certificate_ID" />
+            </Principal>
+            <Dependent Role="HAS_CERTIFICATE">
+              <PropertyRef Name="Certificate_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HAS_CERTIFICATE_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="HAS_CERTIFICATE" Type="Self.HAS_CERTIFICATE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="HAS_CERTIFICATE">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MembershipPayment_Membership">
+          <End Role="Membership" Type="Self.Membership" Multiplicity="1" />
+          <End Role="MembershipPayment" Type="Self.MembershipPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membership">
+              <PropertyRef Name="Membership_ID" />
+            </Principal>
+            <Dependent Role="MembershipPayment">
+              <PropertyRef Name="Membership_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Membership">
+          <End Role="Membership" Type="Self.Membership" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membership">
+              <PropertyRef Name="Membership_ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Membership_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductPayment" Type="Self.ProductPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="ProductPayment">
+              <PropertyRef Name="Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPayment_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="ProductPayment" Type="Self.ProductPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="ProductPayment">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="Rank_ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Rank_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestPayment_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="TestPayment" Type="Self.TestPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="STUDENT_ID" />
+            </Principal>
+            <Dependent Role="TestPayment">
+              <PropertyRef Name="STUDENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestPayment_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="TestPayment" Type="Self.TestPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Test_ID" />
+            </Principal>
+            <Dependent Role="TestPayment">
+              <PropertyRef Name="Test_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HAS_PARENT">
+          <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AdtProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attendances" EntityType="Self.Attendance" />
+          <EntitySet Name="Certificates" EntityType="Self.Certificate" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="HAS_CERTIFICATE" EntityType="Self.HAS_CERTIFICATE" />
+          <EntitySet Name="Memberships" EntityType="Self.Membership" />
+          <EntitySet Name="MembershipPayments" EntityType="Self.MembershipPayment" />
+          <EntitySet Name="Parents" EntityType="Self.Parent" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductPayments" EntityType="Self.ProductPayment" />
+          <EntitySet Name="Ranks" EntityType="Self.Rank" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="TestPayments" EntityType="Self.TestPayment" />
+          <AssociationSet Name="FK_Attendance_Student" Association="Self.FK_Attendance_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Attendance" EntitySet="Attendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Certificate_Rank" Association="Self.FK_Certificate_Rank">
+            <End Role="Rank" EntitySet="Ranks" />
+            <End Role="Certificate" EntitySet="Certificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAS_CERTIFICATE_Certificate" Association="Self.FK_HAS_CERTIFICATE_Certificate">
+            <End Role="Certificate" EntitySet="Certificates" />
+            <End Role="HAS_CERTIFICATE" EntitySet="HAS_CERTIFICATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Rank" Association="Self.FK_Class_Rank">
+            <End Role="Rank" EntitySet="Ranks" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HAS_CERTIFICATE_Student" Association="Self.FK_HAS_CERTIFICATE_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="HAS_CERTIFICATE" EntitySet="HAS_CERTIFICATE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MembershipPayment_Membership" Association="Self.FK_MembershipPayment_Membership">
+            <End Role="Membership" EntitySet="Memberships" />
+            <End Role="MembershipPayment" EntitySet="MembershipPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Membership" Association="Self.FK_Student_Membership">
+            <End Role="Membership" EntitySet="Memberships" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Product" Association="Self.FK_Payment_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductPayment" EntitySet="ProductPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPayment_Student" Association="Self.FK_ProductPayment_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ProductPayment" EntitySet="ProductPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Rank" Association="Self.FK_Student_Rank">
+            <End Role="Rank" EntitySet="Ranks" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Rank" Association="Self.FK_Test_Rank">
+            <End Role="Rank" EntitySet="Ranks" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestPayment_Student" Association="Self.FK_TestPayment_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="TestPayment" EntitySet="TestPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestPayment_Test" Association="Self.FK_TestPayment_Test">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="TestPayment" EntitySet="TestPayments" />
+          </AssociationSet>
+          <AssociationSet Name="HAS_PARENT" Association="Self.HAS_PARENT">
+            <End Role="Parent" EntitySet="Parents" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdtProjectModelStoreContainer" CdmEntityContainer="AdtProjectEntities">
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="AdtProjectModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendance">
+                <ScalarProperty Name="Attendance_ID" ColumnName="Attendance_ID" />
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Certificates">
+            <EntityTypeMapping TypeName="AdtProjectModel.Certificate">
+              <MappingFragment StoreEntitySet="Certificate">
+                <ScalarProperty Name="Certificate_ID" ColumnName="Certificate_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Rank_ID" ColumnName="Rank_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="AdtProjectModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="Class_ID" ColumnName="Class_ID" />
+                <ScalarProperty Name="ClaseCode" ColumnName="ClaseCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Rank_ID" ColumnName="Rank_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HAS_CERTIFICATE">
+            <EntityTypeMapping TypeName="AdtProjectModel.HAS_CERTIFICATE">
+              <MappingFragment StoreEntitySet="HAS_CERTIFICATE">
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="Certificate_ID" ColumnName="Certificate_ID" />
+                <ScalarProperty Name="DateObtained" ColumnName="DateObtained" />
+                <ScalarProperty Name="Issue_ID" ColumnName="Issue_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Memberships">
+            <EntityTypeMapping TypeName="AdtProjectModel.Membership">
+              <MappingFragment StoreEntitySet="Membership">
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
+                <ScalarProperty Name="Membership_ID" ColumnName="Membership_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembershipPayments">
+            <EntityTypeMapping TypeName="AdtProjectModel.MembershipPayment">
+              <MappingFragment StoreEntitySet="MembershipPayment">
+                <ScalarProperty Name="MembershipPayment_ID" ColumnName="MembershipPayment_ID" />
+                <ScalarProperty Name="Membership_ID" ColumnName="Membership_ID" />
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parents">
+            <EntityTypeMapping TypeName="AdtProjectModel.Parent">
+              <MappingFragment StoreEntitySet="Parent">
+                <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+                <ScalarProperty Name="Parent_FName" ColumnName="Parent_FName" />
+                <ScalarProperty Name="Parent_LName" ColumnName="Parent_LName" />
+                <ScalarProperty Name="Parent_Title" ColumnName="Parent_Title" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AdtProjectModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
+                <ScalarProperty Name="QuantitySold" ColumnName="QuantitySold" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductPayments">
+            <EntityTypeMapping TypeName="AdtProjectModel.ProductPayment">
+              <MappingFragment StoreEntitySet="ProductPayment">
+                <ScalarProperty Name="Payment_ID" ColumnName="Payment_ID" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ranks">
+            <EntityTypeMapping TypeName="AdtProjectModel.Rank">
+              <MappingFragment StoreEntitySet="Rank">
+                <ScalarProperty Name="Rank_ID" ColumnName="Rank_ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="AdtProjectModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="STUDENT_Fname" ColumnName="STUDENT_Fname" />
+                <ScalarProperty Name="STUDENT_Lname" ColumnName="STUDENT_Lname" />
+                <ScalarProperty Name="STUDENT_DOB" ColumnName="STUDENT_DOB" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="DateJoined" ColumnName="DateJoined" />
+                <ScalarProperty Name="Membership_ID" ColumnName="Membership_ID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+                <ScalarProperty Name="Rank_ID" ColumnName="Rank_ID" />
+                <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+                <ScalarProperty Name="AttendanceCount" ColumnName="AttendanceCount" />
+                <ScalarProperty Name="MembershipValidTill" ColumnName="MembershipValidTill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="AdtProjectModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
+                <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Rank_ID" ColumnName="Rank_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestPayments">
+            <EntityTypeMapping TypeName="AdtProjectModel.TestPayment">
+              <MappingFragment StoreEntitySet="TestPayment">
+                <ScalarProperty Name="TestPayment_ID" ColumnName="TestPayment_ID" />
+                <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+                <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="HAS_PARENT" TypeName="AdtProjectModel.HAS_PARENT" StoreEntitySet="HAS_PARENT">
+            <EndProperty Name="Parent">
+              <ScalarProperty Name="Parent_ID" ColumnName="Parent_ID" />
+            </EndProperty>
+            <EndProperty Name="Student">
+              <ScalarProperty Name="STUDENT_ID" ColumnName="STUDENT_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,46 @@
+﻿@model Dojo.Models.TestPayment
+
+@{
+    ViewBag.Title = "Test Payment Details";
+}
+
+<div class="box box-info">
+
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Student.STUDENT_Fname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Student.STUDENT_Fname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Test.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Test.Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+       
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

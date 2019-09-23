@@ -1,0 +1,69 @@
+﻿@model Dojo.Models.Product
+
+@{
+    ViewBag.Title = "Remove From Inventoy";
+}
+
+<div class="box box-info">
+
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <h4>Are you sure you want to delete this?</h4>
+    <div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CostPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CostPrice)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SellingPrice)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SellingPrice)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.QuantityInStock)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.QuantityInStock)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+    </div>

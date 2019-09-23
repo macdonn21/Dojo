@@ -1,0 +1,149 @@
+﻿@model Dojo.Models.Student
+
+@{
+    ViewBag.Title = "Student Details";
+}
+
+<div class="box box-info">
+
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.STUDENT_Fname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.STUDENT_Fname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.STUDENT_Lname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.STUDENT_Lname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.STUDENT_DOB)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.STUDENT_DOB)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StreetName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StreetName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Town)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Town)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PostalCode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateJoined)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateJoined)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsParent)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsParent)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Parent_ID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Parent_ID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AttendanceCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AttendanceCount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MembershipValidTill)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MembershipValidTill)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Membership.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Membership.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Rank.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Rank.Title)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.STUDENT_ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

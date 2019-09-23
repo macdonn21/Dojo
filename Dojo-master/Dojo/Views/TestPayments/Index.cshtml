@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Dojo.Models.TestPayment>
+
+@{
+    ViewBag.Title = "Test Payment";
+}
+
+<div class="box box-info">
+
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+               First Name
+            </th>
+            <th>
+               Last Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Test.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            var date = item.Date.ToShortDateString();
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.STUDENT_Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.STUDENT_Lname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Test.Name)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.TestPayment_ID }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.TestPayment_ID }) 
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.TestPayment_ID })*@
+            </td>
+        </tr>
+        }
+
+    </table>
+    </div>

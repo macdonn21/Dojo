@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Dojo.Models.Rank>
+
+@{
+    ViewBag.Title = "Ranks";
+}
+
+<div class="box box-info">
+
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Rank_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Rank_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Rank_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

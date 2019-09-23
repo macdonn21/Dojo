@@ -1,0 +1,62 @@
+﻿@model Dojo.Models.ProductPayment
+
+@{
+    ViewBag.Title = "Purchase Details";
+}
+
+<div class="box box-info">
+
+    <div class="box-header with-border">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+
+            <dt>
+                Amount Recieved ($)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Total)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Product.ProductName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Student.Fullname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Student.Fullname)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+       
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>
